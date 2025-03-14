@@ -1,0 +1,6 @@
+if BOARD_FLICKPAD
+
+config BOARD
+    default "flickpad"
+
+endif # BOARD_FLICKPAD
