@@ -1,6 +1,9 @@
 if BOARD_FLICKPAD
 
-config BOARD
+config ZMK_KEYBOARD_NAME
     default "flickpad"
+
+config BT_CTLR
+    default BT
 
 endif # BOARD_FLICKPAD

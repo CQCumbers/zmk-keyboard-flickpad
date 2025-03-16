@@ -1,0 +1,447 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    macros {
+        ZMK_MACRO(hkana,
+            bindings = <&to 2 &kp LC(CAPS)>;
+        )
+
+        ZMK_MACRO(kkana,
+            bindings = <&to 2 &kp LA(CAPS)>;
+        )
+
+        ZMK_MACRO(eisu0,
+            bindings = <&to 0 &kp LS(CAPS)>;
+        )
+
+        ZMK_MACRO(eisu1,
+            bindings = <&to 1 &kp LA(CAPS)>;
+        )
+
+        kp2: kp2 {
+            compatible = "zmk,behavior-macro-two-param";
+            tap-ms = <40>;
+            #binding-cells = <2>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_param_2to2>
+                , <&kp MACRO_PLACEHOLDER &kp MACRO_PLACEHOLDER>;
+        };
+
+        xkp: xkp {
+            compatible = "zmk,behavior-macro-two-param";
+            tap-ms = <40>;
+            #binding-cells = <2>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_param_2to2>
+                , <&kp X &kp MACRO_PLACEHOLDER &kp MACRO_PLACEHOLDER>;
+        };
+
+        ZMK_MACRO(star,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N9 &kp KP_N7 &kp KP_N3 &kp KP_N3>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(note,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N1 &kp KP_N3>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(arrow,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N2 &kp KP_N6>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(euro,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N2 &kp KP_N8>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(degree,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N6>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(circle,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N9>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(multiply,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N5>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(divide,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N2 &kp KP_N4 &kp KP_N7>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(yuubin,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings = <&kp Y &kp U &kp U &kp B &kp I &kp N &kp N &kp SPACE>;
+        )
+
+        ZMK_MACRO(noma,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings = <&kp O &kp N &kp A &kp J &kp I &kp SPACE>;
+        )
+
+        ZMK_MACRO(shime,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings = <&kp S &kp H &kp I &kp M &kp E &kp SPACE>;
+        )
+
+        ZMK_MACRO(bslash,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N9 &kp KP_N2>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(lbracket,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N9 &kp KP_N1>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(rbracket,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N9 &kp KP_N3>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(ellipsis,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N0 &kp KP_N1 &kp KP_N3 &kp KP_N3>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(minus,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N4 &kp KP_N5>
+                , <&macro_release &kp LALT>
+                ;
+        )
+
+        ZMK_MACRO(fslash,
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&macro_press   &kp LALT>
+                , <&macro_tap     &kp KP_N4 &kp KP_N7>
+                , <&macro_release &kp LALT>
+                ;
+        )
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            // -----------------------------------
+            // |   ESC |   @ |   A |   D |  BSPC |
+            // |   ESC |   # |   B |   E |  BSPC | <
+            // |   ESC |   / |   C |   F |  BSPC | ^
+            // |   ESC |   & |     |     |  BSPC | >
+            // |   ESC |   _ |     |     |  BSPC | V
+            // -----------------------------------
+            // | EISU1 |   G |   J |   M | SPACE |
+            // | EISU1 |   H |   K |   N | SPACE | <
+            // | EISU1 |   I |   L |   O | SPACE | ^
+            // | EISU1 |     |     |     |   TAB | >
+            // | EISU1 |     |     |     |   TAB | V
+            // -----------------------------------
+            // | EISU0 |   P |   T |   W | ENTER |
+            // | EISU0 |   Q |   U |   X | ENTER | <
+            // | EISU0 |   R |   V |   Y | ENTER | ^
+            // | EISU0 |   S |     |   Z | ENTER | >
+            // | EISU0 |     |     |     | ENTER | V
+            // -----------------------------------
+            // | HKANA |   3 |   ' |   . |       |
+            // | HKANA |   3 |   " |   , |  LEFT | <
+            // | HKANA |   3 |   ( |   ? |    UP | ^
+            // | KKANA |   4 |   ) |   ! | RIGHT | >
+            // | KKANA |   4 |     |     |  DOWN | V
+            // -----------------------------------
+            bindings = <
+                &kp ESC &kp AT    &kp A     &kp D     &kp BSPC
+                &kp ESC &kp POUND &kp B     &kp E     &kp BSPC
+                &kp ESC &kp FSLH  &kp C     &kp F     &kp BSPC
+                &kp ESC &kp AMPS  &kp A     &kp D     &kp BSPC
+                &kp ESC &kp UNDER &kp A     &kp D     &kp BSPC
+
+                &eisu1  &kp G     &kp J     &kp M     &kp SPACE
+                &eisu1  &kp H     &kp K     &kp N     &kp SPACE
+                &eisu1  &kp I     &kp L     &kp O     &kp SPACE
+                &eisu1  &kp G     &kp J     &kp M     &kp TAB
+                &eisu1  &kp G     &kp J     &kp M     &kp TAB
+
+                &eisu0  &kp P     &kp T     &kp W     &kp RET
+                &eisu0  &kp Q     &kp U     &kp X     &kp RET
+                &eisu0  &kp R     &kp V     &kp Y     &kp RET
+                &eisu0  &kp S     &kp T     &kp Z     &kp RET
+                &eisu0  &kp P     &kp T     &kp W     &kp RET
+
+                &hkana  &mo 3     &kp SQT   &kp DOT   &none
+                &hkana  &mo 3     &kp DQT   &kp COMMA &kp LEFT
+                &hkana  &mo 3     &kp LPAR  &kp QMARK &kp UP
+                &kkana  &mo 3     &kp RPAR  &kp EXCL  &kp RIGHT
+                &kkana  &mo 3     &kp SQT   &kp DOT   &kp DOWN
+            >;
+        };
+
+        symbol_layer {
+            // -----------------------------------
+            // |   ESC |   1 |   2 |   3 |  BSPC |
+            // |   ESC | STR | YEN |   % |  BSPC | <
+            // |   ESC | NOT |   $ | DEG |  BSPC | ^
+            // |   ESC |  -> | EUR |   # |  BSPC | >
+            // |   ESC |     |     |     |  BSPC | V
+            // -----------------------------------
+            // | EISU1 |   4 |   5 |   6 | SPACE |
+            // | EISU1 |   O |   + |   < | SPACE | <
+            // | EISU1 |   * |   x |   = | SPACE | ^
+            // | EISU1 |   . | DIV |   > |   TAB | >
+            // | EISU1 |     |     |     |   TAB | V
+            // -----------------------------------
+            // | EISU0 |   7 |   8 |   9 | ENTER |
+            // | EISU0 |   [ |   T |   ^ | ENTER | <
+            // | EISU0 |   ] | NMA |   | | ENTER | ^
+            // | EISU0 |   : | SME |   \ | ENTER | >
+            // | EISU0 |     |     |     | ENTER | V
+            // -----------------------------------
+            // | HKANA |   ( |   0 |   . |       |
+            // | HKANA |   ) |   ~ |   , |  LEFT | <
+            // | HKANA |   [ | ... |   - |    UP | ^
+            // | KKANA |   ] |     |   / | RIGHT | >
+            // | KKANA |     |     |     |  DOWN | V
+            // -----------------------------------
+            bindings = <
+                &trans  &kp N1    &kp N2    &kp N3    &trans
+                &trans  &star     &kp FSLH  &kp PRCNT &trans
+                &trans  &note     &kp DLLR  &degree   &trans
+                &trans  &arrow    &euro     &kp POUND &trans
+                &trans  &kp N1    &kp N2    &kp N3    &trans
+
+                &trans  &kp N4    &kp N5    &kp N6    &trans
+                &trans  &circle   &kp PLUS  &kp LT    &trans
+                &trans  &kp STAR  &multiply &kp EQUAL &trans
+                &trans  &kp BSLH  &divide   &kp GT    &trans
+                &trans  &kp N4    &kp N5    &kp N6    &trans
+
+                &trans  &kp N7    &kp N8    &kp N9    &trans
+                &trans  &kp LBKT  &yuubin   &kp CARET &trans
+                &trans  &kp RBKT  &noma     &kp PIPE  &trans
+                &trans  &kp COLON &shime    &bslash   &trans
+                &trans  &kp N7    &kp N8    &kp N9    &trans
+
+                &trans  &kp LPAR  &kp N0    &kp DOT   &trans
+                &trans  &kp RPAR  &kp TILDE &kp COMMA &trans
+                &trans  &lbracket &ellipsis &minus    &trans
+                &trans  &rbracket &kp N0    &fslash   &trans
+                &trans  &kp LPAR  &kp N0    &kp DOT   &trans
+            >;
+        };
+
+        kana_layer {
+            // -----------------------------------
+            // |   ESC |   A |  KA |  SA |  BSPC |
+            // |   ESC |   I |  KI | SHI |  BSPC | <
+            // |   ESC |   U |  KU |  SU |  BSPC | ^
+            // |   ESC |   E |  KE |  SE |  BSPC | >
+            // |   ESC |   O |  KO |  SO |  BSPC | V
+            // -----------------------------------
+            // | EISU1 |  TA |  NA |  HA | SPACE |
+            // | EISU1 | CHI |  NI |  HI | SPACE | <
+            // | EISU1 | TSU |  NU |  FU | SPACE | ^
+            // | EISU1 |  TE |  NE |  HE |   TAB | >
+            // | EISU1 |  TO |  NO |  HO |   TAB | V
+            // -----------------------------------
+            // | EISU0 |  MA |  YA |  RA | ENTER |
+            // | EISU0 |  MI |   [ |  RI | ENTER | <
+            // | EISU0 |  MU |  YU |  RU | ENTER | ^
+            // | EISU0 |  ME |   ] |  RE | ENTER | >
+            // | EISU0 |  MO |  YO |  RO | ENTER | V
+            // -----------------------------------
+            // | HKANA |   3 |  WA |   , |       |
+            // | HKANA |   3 |  WO |   . |  LEFT | <
+            // | HKANA |   3 |   N |   ? |    UP | ^
+            // | KKANA |   4 |   - |   ! | RIGHT | >
+            // | KKANA |   4 |     |     |  DOWN | V
+            // -----------------------------------
+            bindings = <
+                &trans  &kp A     &kp2 K A  &kp2 S A  &trans
+                &trans  &kp I     &kp2 K I  &kp2 S I  &trans
+                &trans  &kp U     &kp2 K U  &kp2 S U  &trans
+                &trans  &kp E     &kp2 K E  &kp2 S E  &trans
+                &trans  &kp O     &kp2 K O  &kp2 S O  &trans
+
+                &trans  &kp2 T A  &kp2 N A  &kp2 H A  &trans
+                &trans  &kp2 T I  &kp2 N I  &kp2 H I  &trans
+                &trans  &kp2 T U  &kp2 N U  &kp2 H U  &trans
+                &trans  &kp2 T E  &kp2 N E  &kp2 H E  &trans
+                &trans  &kp2 T O  &kp2 N O  &kp2 H O  &trans
+
+                &trans  &kp2 M A  &kp2 Y A  &kp2 R A  &trans
+                &trans  &kp2 M I  &kp LBKT  &kp2 R I  &trans
+                &trans  &kp2 M U  &kp2 Y U  &kp2 R U  &trans
+                &trans  &kp2 M E  &kp RBKT  &kp2 R E  &trans
+                &trans  &kp2 M O  &kp2 Y O  &kp2 R O  &trans
+
+                &trans  &mo 4     &kp2 W A  &kp COMMA &trans
+                &trans  &mo 4     &kp2 W I  &kp DOT   &trans
+                &trans  &mo 4     &kp2 N N  &kp QMARK &trans
+                &trans  &mo 5     &kp MINUS &kp EXCL  &trans
+                &trans  &mo 5     &kp2 W A  &kp COMMA &trans
+            >;
+        };
+
+        caps_layer {
+            bindings = <
+                &trans  &trans    &kp LS(A) &kp LS(D) &trans
+                &trans  &trans    &kp LS(B) &kp LS(E) &trans
+                &trans  &trans    &kp LS(C) &kp LS(F) &trans
+                &trans  &trans    &kp LS(A) &kp LS(D) &trans
+                &trans  &trans    &kp LS(A) &kp LS(D) &trans
+
+                &trans  &kp LS(G) &kp LS(J) &kp LS(M) &trans
+                &trans  &kp LS(H) &kp LS(K) &kp LS(N) &trans
+                &trans  &kp LS(I) &kp LS(L) &kp LS(O) &trans
+                &trans  &kp LS(G) &kp LS(J) &kp LS(M) &trans
+                &trans  &kp LS(G) &kp LS(J) &kp LS(M) &trans
+
+                &trans  &kp LS(P) &kp LS(T) &kp LS(W) &trans
+                &trans  &kp LS(Q) &kp LS(U) &kp LS(X) &trans
+                &trans  &kp LS(R) &kp LS(V) &kp LS(Y) &trans
+                &trans  &kp LS(S) &kp LS(T) &kp LS(Z) &trans
+                &trans  &kp LS(P) &kp LS(T) &kp LS(W) &trans
+
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+            >;
+        };
+
+        dakuten_layer {
+            bindings = <
+                &trans  &kp2 X A  &kp2 G A  &kp2 Z A  &trans
+                &trans  &kp2 X I  &kp2 G I  &kp2 Z I  &trans
+                &trans  &kp2 X U  &kp2 G U  &kp2 Z U  &trans
+                &trans  &kp2 X E  &kp2 G E  &kp2 Z E  &trans
+                &trans  &kp2 X O  &kp2 G O  &kp2 Z O  &trans
+
+                &trans  &kp2 D A  &trans    &kp2 B A  &trans
+                &trans  &kp2 D I  &trans    &kp2 B I  &trans
+                &trans  &xkp T U  &trans    &kp2 B U  &trans
+                &trans  &kp2 D E  &trans    &kp2 B E  &trans
+                &trans  &kp2 D O  &trans    &kp2 B O  &trans
+
+                &trans  &trans    &xkp Y A  &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &xkp Y U  &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &xkp Y O  &trans    &trans
+
+                &trans  &trans    &xkp W A  &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+            >;
+        };
+
+        handakuten_layer {
+            bindings = <
+                &trans  &kp2 X A  &kp2 G A  &kp2 Z A  &trans
+                &trans  &kp2 X I  &kp2 G I  &kp2 Z I  &trans
+                &trans  &kp2 V U  &kp2 G U  &kp2 Z U  &trans
+                &trans  &kp2 X E  &kp2 G E  &kp2 Z E  &trans
+                &trans  &kp2 X O  &kp2 G O  &kp2 Z O  &trans
+
+                &trans  &kp2 D A  &trans    &kp2 P A  &trans
+                &trans  &kp2 D I  &trans    &kp2 P I  &trans
+                &trans  &kp2 D U  &trans    &kp2 P U  &trans
+                &trans  &kp2 D E  &trans    &kp2 P E  &trans
+                &trans  &kp2 D O  &trans    &kp2 P O  &trans
+
+                &trans  &trans    &xkp Y A  &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &xkp Y U  &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &xkp Y O  &trans    &trans
+
+                &trans  &trans    &xkp W A  &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+                &trans  &trans    &trans    &trans    &trans
+            >;
+        };
+    };
+};
